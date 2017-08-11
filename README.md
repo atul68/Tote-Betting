@@ -61,17 +61,17 @@ Step 4: "npm start" to start application
 
 Step 5: Open browser and Hit URL : http://localhost:3000/
         Below UI should open up
-![Alt text](D:\projects\tapcorp\Tote-Betting\images\homepage.PNG?raw=true "Home Page")
+![Alt text](https://github.com/atul68/Tote-Betting/blob/master/images/homepage.PNG?raw=true "Home Page")
 
 Step 6: Click on "Start a new race" link
         Below UI should open up
-![Alt text](D:\projects\tapcorp\Tote-Betting\images\mainpage.PNG?raw=true "Main Page")
+![Alt text](https://github.com/atul68/Tote-Betting/blob/master/images/mainpage.PNG?raw=true "Main Page")
 
 Step 7: This page have race id and links of "Start Betting" and "Back to Home Page"
 
 Step 8: Click on "Start Betting" link
         Below UI should open up
-![Alt text](\images\bet.PNG?raw=true "Bet Page")
+![Alt text](https://github.com/atul68/Tote-Betting/blob/master/images/bet.PNG?raw=true "Bet Page")
 
 Step 9: Enter Bid type[W,P,E are valid bet types], horse number and bid amount, click on submit button
 |Type   | Des   |
@@ -82,15 +82,15 @@ Step 9: Enter Bid type[W,P,E are valid bet types], horse number and bid amount, 
 
 Step 10: click on submit button
         Below UI showing validate inputs
-![Alt text](\images\betswithValiddata.PNG?raw=true "Bet Page")
+![Alt text](https://github.com/atul68/Tote-Betting/blob/master/images/betswithValiddata.PNG?raw=true "Bet Page")
 
 Step 11: IF you have enter valid data, you will get success message on bet page
         As shown below
-![Alt text](\images\betSuccessResponse.PNG?raw=true "Bet Page with success message")
+![Alt text](https://github.com/atul68/Tote-Betting/blob/master/images/betSuccessResponse.PNG?raw=true "Bet Page with success message")
 
 Step 12: IF you have enter invalid data, you will get a error message on bet page
          As shown below
-![Alt text](\images\betErrorMessage.PNG?raw=true "Bet Page with error message")
+![Alt text](https://github.com/atul68/Tote-Betting/blob/master/images/betErrorMessage.PNG?raw=true "Bet Page with error message")
 
 Step 13: Repeat step 9,10 to add more bets
 
@@ -98,7 +98,7 @@ Step 14: Click on result link
 
 Step 13: Enter result for first, second and third position
          As shown below
-![Alt text](\images\resutlValidInput.PNG?raw=true "Bet Page with error message")
+![Alt text](https://github.com/atul68/Tote-Betting/blob/master/images/resutlValidInput.PNG?raw=true "Bet Page with error message")
 
 Step 14: Click on submit button, it will navigate you to Show Dividend page
 
