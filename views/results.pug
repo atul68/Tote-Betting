@@ -5,7 +5,7 @@ block content
     - if (errors)
         ul
           each val, index in errors
-            li= index + ':' +val.msg
+            li= val.msg
 
     form(method='POST' action='/races/'+raceId+'/results')
         label First Ranker:

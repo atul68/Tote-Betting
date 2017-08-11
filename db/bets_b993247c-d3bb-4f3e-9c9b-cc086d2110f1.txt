@@ -1,0 +1,8 @@
+{"product":"E","selections":"1,2","stake":"200"}
+{"product":"E","selections":"1,2","stake":"200"}
+{"product":"W","selections":"10","stake":"10"}
+{"product":"W","selections":"10","stake":"10"}
+{"product":"W","selections":"10","stake":"10"}
+{"product":"W","selections":"10","stake":"123"}
+{"product":"E","selections":"1,2","stake":"100"}
+{"product":"P","selections":"1","stake":"100"}

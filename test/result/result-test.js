@@ -12,7 +12,7 @@ var req = {
         "second": "2",
         "third": "3"
     }
-}
+};
 
 describe("Results", function() {
     it("should be saved", function(done) {

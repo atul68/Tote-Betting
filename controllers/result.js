@@ -24,10 +24,20 @@ router.post('/races/:raceId/results', function(req, res, next) {
 	req.checkBody('first', 'First Ranker is Required ').notEmpty();
 	req.checkBody('second', 'Second Ranker is Required').notEmpty();
 	req.checkBody('third', 'Third Ranker is Required').notEmpty();
+	req.checkBody('first', 'First Ranker should be a number.').isInt();
 	req.checkBody('second', 'Second Ranker should be a number. ').isInt();
 	req.checkBody('third', 'Third Ranker should be a number. ').isInt();
-	var errors = req.validationErrors();
 
+	var errors = req.validationErrors();
+	var horseRank = new Set();
+	horseRank.add(req.body.first);
+	horseRank.add(req.body.second);
+	horseRank.add(req.body.third);
+
+	if(!errors && horseRank && horseRank.size !=3){
+		errors=[];
+		errors.push({param: '', msg: 'First,Second.Third Rankers should be unique', value: ''});
+	}
 	if(errors.length > 0){
 		return next(errors);
 	}else {

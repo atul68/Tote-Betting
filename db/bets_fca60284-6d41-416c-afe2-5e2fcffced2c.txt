@@ -1,0 +1,2 @@
+{"product":"W","selections":"10","stake":"1000"}
+{"product":"W","selections":"100","stake":"11"}

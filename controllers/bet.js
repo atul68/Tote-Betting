@@ -26,7 +26,8 @@ router.post('/races/:raceId/bets', function(req, res, next) {
 			next(err);
 		} else {
 			return res.render('bets', {
-				raceId : req.raceId
+				raceId : req.raceId,
+				successMessage:"your bet submitted successfully"
 			});
 		}
 	});

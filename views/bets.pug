@@ -2,6 +2,7 @@ extends layout
 
 block content
     h1 Bets
+    h3 !{successMessage}
     - if (errors)
             ul
               each val, index in errors

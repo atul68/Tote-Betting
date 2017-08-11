@@ -4,7 +4,8 @@
   "description": "Tote Betting App",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -R landing test/**/*.js"
+    "test": "mocha -R landing test/**/*.js",
+    "start": "node ./index.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "express-validator": "^3.2.1",
     "jsdocs": "^1.0.0",
     "lodash": "^4.17.4",
+    "pug": "^2.0.0-rc.3",
     "uuid": "^3.1.0"
   },
   "devDependencies": {

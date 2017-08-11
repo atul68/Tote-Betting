@@ -17,33 +17,38 @@ function validate(bet, cb) {
     if(bet.product.trim()){
         var validProducts=config.bidTypes; // Accepted Products
         if(validProducts.indexOf(bet.product.trim())  < 0){
-            errors.push(new Error("Select Product from W, P or E."));
+            errors.push(new Error("Select Bid Type from W, P or E."));
         }
     } else {
-        errors.push(new Error("Product is Required."));
+        errors.push(new Error("Bid Type is Required."));
     }
 
     if(bet.selections.trim()){
         //Exacta bet selection has format - {{1,2}}
         if( 'E' === bet.product.trim() && bet.selections.trim().split(",").length !== 2 ) {   
-            errors.push(new Error('Exacta bet selections should be <number>,<number> format.'));
+            errors.push(new Error('Exacta bet Horse No should be <number>,<number> format.'));
         }
         if('E' !== bet.product.trim() && bet.selections.trim().split(",").length !== 1){
-            errors.push(new Error('Selections should be a number format.'));
+            errors.push(new Error('Horse No should be a number format.'));
+        }
+        if('E' === bet.product.trim() && bet.selections.trim().split(",").length == 2){
+            var selectedHoreseList=bet.selections.trim().split(",");
+            if(selectedHoreseList[0]==selectedHoreseList[1])
+            errors.push(new Error('Exacta bets selected horses should be unique.'));
         }
         if(!isValidSelections(bet.selections.trim())){
-            errors.push(new Error('Selections value is not valid.'));
+            errors.push(new Error('Horse No value is not valid.'));
         }
     } else{
-        errors.push(new Error("Selections is Required."));
+        errors.push(new Error("Horse No is Required."));
     }
 
     if(bet.stake.trim()){
         if(isNaN(bet.stake.trim())){
-            errors.push(new Error("Stake amount should be a number."));
+            errors.push(new Error("Bid amount should be a number."));
         }
     } else{
-        errors.push(new Error("Stake is Required."));
+        errors.push(new Error("Bid Amount is Required."));
     }
 
     if(errors.length > 0){

@@ -27,10 +27,18 @@ describe("Bets", function() {
     it("should give multiple errors", function(done) {
        Bet.save({"body" : {"product":"","selections":"","stake":""}}, function(err, resp){
             expect(err).to.be.ok;
-            assert.equal("Error: Product is Required.", err[0]);
-            assert.equal("Error: Selections is Required.", err[1]);
-            assert.equal("Error: Stake is Required.", err[2]);
+            assert.equal("Error: Bid Type is Required.", err[0]);
+            assert.equal("Error: Horse No is Required.", err[1]);
+            assert.equal("Error: Bid Amount is Required.", err[2]);
             done();
         })
     });
+    it("should give error unique horse number required in case of exacta", function(done) {
+        Bet.save({"body" : {"product":"E","selections":"1,1","stake":"100"}}, function(err, resp){
+            expect(err).to.be.ok;
+            assert.equal("Error: Exacta bets selected horses should be unique.", err[0]);
+            done();
+        })
+    });
+
 });

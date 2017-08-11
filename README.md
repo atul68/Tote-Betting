@@ -44,44 +44,74 @@ Output is dividends which are shown in following format product:winning selectio
 For example W:2:$2.61 # Win bet on horse 2 yields $2.61 P:2:$1.06 # Place bet on horse 2 yields $1.06 P:3:$1.27 # Place bet on horse 3 yields $1.27 P:1:$2.13 # Place bet on horse 1 yields $2.13 E:2,3:$2.43 # Exacta on horses 2,3 yields $2.43
 
 # How to run application:
+Application is built on node version v6.11.2
+
 Step 1: Clone the project
 ```
-git clone http://td-rhel6-e61f7.dynamic.ocio.cloud.td.com/api-team/com-td-api-framework-performanceFoundation.git
+git clone https://github.com/atul68/Tote-Betting.git
 ```
-Step 2: open command prompt and got to project directory
+Step 2: Open command prompt and go to project directory
 
+```
+cd <folder location where step 1 was executed>\Tote-Betting
+```
 Step 3: "npm install" it will install all the dependencies
 
-Step 4: "node ." to run node application
+Step 4: "npm start" to start application
 
-Step 5: click on "begin Race" link
+Step 5: Open browser and Hit URL : http://localhost:3000/
+        Below UI should open up
+![Alt text](D:\projects\tapcorp\Tote-Betting\images\homepage.PNG?raw=true "Home Page")
 
-Step 6: Enter the bid type, horse number and  bid amount
+Step 6: Click on "Start a new race" link
+        Below UI should open up
+![Alt text](D:\projects\tapcorp\Tote-Betting\images\mainpage.PNG?raw=true "Main Page")
 
-Step 7: click on submit button
+Step 7: This page have race id and links of "Start Betting" and "Back to Home Page"
 
-Step 8: repeat step 6 and 7 if you want to bid again
+Step 8: Click on "Start Betting" link
+        Below UI should open up
+![Alt text](\images\bet.PNG?raw=true "Bet Page")
 
-Step 9: click on result link
+Step 9: Enter Bid type[W,P,E are valid bet types], horse number and bid amount, click on submit button
+|Type   | Des   |
+|W      | Win   |
+|P      | Place |
+|E      | Exacta|
 
-Step 10: enter result for first, second and third position
 
-Step 11: click on submit button, it will navigate you to dividend page
+Step 10: click on submit button
+        Below UI showing validate inputs
+![Alt text](\images\betswithValiddata.PNG?raw=true "Bet Page")
 
-Step 12: dividend page will show the dividend all the bid type
+Step 11: IF you have enter valid data, you will get success message on bet page
+        As shown below
+![Alt text](\images\betSuccessResponse.PNG?raw=true "Bet Page with success message")
+
+Step 12: IF you have enter invalid data, you will get a error message on bet page
+         As shown below
+![Alt text](\images\betErrorMessage.PNG?raw=true "Bet Page with error message")
+
+Step 13: Repeat step 9,10 to add more bets
+
+Step 14: Click on result link
+
+Step 13: Enter result for first, second and third position
+         As shown below
+![Alt text](\images\resutlValidInput.PNG?raw=true "Bet Page with error message")
+
+Step 14: Click on submit button, it will navigate you to Show Dividend page
+
+Step 15: Click on "Show Dividend" link
+
+Step 16: This page will show dividend details for all bid types
 
 # How to run test cases:
-Step 1: open command prompt and got to project directory
+run "mocha" to run test cases.
 
-Step 2: "npm install" it will install all the dependencies
-
-Step 3: "mocha" to run test cases.
-
-
-
-#Future Scope:
+# Future Scope:
 - user management functionality
 - data base support
-- login functionality for users/punters
-- prediction tab which will all previous results
+- login functionality for users/punters/admin
+- prediction tab which will have all previous race results
 
