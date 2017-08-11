@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: app/bet/index.js</title>
+    <title>JSDoc: Source: controllers/dividend.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: app/bet/index.js</h1>
+    <h1 class="page-title">Source: controllers/dividend.js</h1>
 
     
 
@@ -28,50 +28,49 @@
         <article>
             <pre class="prettyprint source linenums"><code>'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var validator = require("./../../validators/validator");
-var config = require('./../../config/bidConfig');
-/**
- * Represents a Bet Class
- * @constructor
- * @param {String} product - represents product types(allowed are W, P or E)
- * @param {String} selections - represents horse no. for betting
- * @param {String} stake - represents amount in $
- */
-function Bet(product, selections, stake){
-	this.product = product;
-	this.selections = selections;
-	this.stake = stake;
-}
+var express  = require('express');
+var router = express.Router();
+var Dividend = require('./../app/dividend');
 
 /**
- * Bet Class - save method
- * This method is used for saving a bet in Bets file. If bet save successfully,
- * returns Bet object, otherwise return errors in next(err)
- * @method
- * @param {Object} req - represets json object with childs raceId and body
- * @param {Function} next - represents Calback function
- * @returns {Bet} bet - represents Bet object
+ *
+ * This method is used for set race id in request as parameter
+ * returns call back
+ * @method  Bet Controller Class - router.param method
+ * @param {int} raceId - represents race id
+ * @param {Function} call function - represents Callback function
+ * @returns {next}  - call back
  */
-Bet.save = function(req, next){
-	try{
-		var raceId = req.raceId;
-		var bet = new Bet(req.body.product, req.body.selections, req.body.stake);
-		validator.validate(bet, function(err, res){
-			if(err){
-				throw err;
-			}
-			var fileName = config.db.betsFolderURL +raceId+config.db.extn;    // create file name based on RaceId
-			fs.appendFileSync(path.join(fileName), JSON.stringify(bet)+"\n");
-			next(null, bet);
-		});
-	}catch(err){
-		next(err);
-	}
-}
+// raceId set in req as param
+router.param('raceId', function(req, res, next, raceId) {
+    req.raceId = raceId;
+    next();
+ 
+});
 
-module.exports = Bet;</code></pre>
+/**
+ * This method handler show dividends request
+ * @method Bet Controller Class - router.post method
+ * @param {int} raceId - represents race id
+ * @param {Function} call function - represents Callback function
+ * @returns {next}  - call back
+ */
+// get route
+router.get('/races/:raceId/dividends', function(req, res, next) {
+	Dividend.calculate(req, function(err, resp){
+
+	 	if(err){
+			next(err);
+		}else{
+			return res.render('dividends', {
+				raceId : req.raceId,
+				dividends : resp
+			});
+		}
+	});
+});
+
+module.exports = router;</code></pre>
         </article>
     </section>
 

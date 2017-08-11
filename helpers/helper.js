@@ -2,11 +2,16 @@
 
 var _ = require('lodash');
 
+/**
+ * Module contains bet related utilities methods.
+ * @module Helpers/helper
+ */
 module.exports = {
 
 	/**
-	 * calculateTotalAmount method
-	 * This method is used for calculating total amount based on bets
+	 *
+	 * helper class calculateTotalAmount method
+	 * This method is used for calculating total amount based on bet
 	 * @method
 	 * @param {String[]} bets - represets all bets on race
 	 * @returns {Number} totalAmount - represents total amount
@@ -19,6 +24,7 @@ module.exports = {
 	},
 
 	/**
+	 *
 	 * filterBetsBasedOnSelections method
 	 * This method is used for filtering bets based on selections and match criteria
 	 * @method
@@ -35,6 +41,7 @@ module.exports = {
 	},
 
 	/**
+	 *
 	 * filterBetsBasedOnProduct method
 	 * This method is used for filtering bets based on product and match criteria
 	 * @method

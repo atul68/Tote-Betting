@@ -11,7 +11,7 @@ var pDividend = require('./place-dividend');
 var Promise = require('bluebird');
 
 /**
- * Represents a Dividend Class
+ * Represents a dividend Class
  * @constructor
  * @param {String} product - represents product types(allowed are W, P or E)
  * @param {String} winningSelections - represents winning horse no based on bet type
@@ -24,11 +24,11 @@ function Dividend(product, winningSelections, dividend){
 }
 
 /**
- * Dividend Class - calculate method
+ * dividend Class - calculate method
  * This method is used for calculating dividend amounts for all bet types.
  * If dividend calculated successfully returns Dividend object and call next(), 
  * otherwise return errors in next(err)
- * @methos
+ * @method
  * @param {Object} req - represets json object with childs raceId and body
  * @param {Function} next - represents Calback function
  * @returns {Dividend} dividends - represents dividends list based on bet types
@@ -57,7 +57,6 @@ Dividend.calculate = function(req, next){
 			next(null, dividends);
 		})
 	}catch(err){
-		console.log('error---',err);
 		next(err);
 	}
 }

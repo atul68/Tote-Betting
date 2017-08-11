@@ -4,7 +4,7 @@ var config = require('./../../config/bidConfig');
 var helper = require('./../../helpers/helper');
 
 /**
- * getExactaDividend method
+ * ExactaDividend Class - getExactaDividend method
  * This method is used for getitng exacta bet dividend amount.
  * @method
  * @param {String[]} exactaBets - represets all exacta type bets on race
@@ -27,8 +27,8 @@ function getExactaDividend(exactaBets, result, next){
 }
 
 /**
- * filterBetsBasedOnSelections method
- * This method is used for filtering bets based on selections and match criteria
+ *  ExactaDividend Class - filterBetsBasedOnSelections method
+  * This method is used for filtering bets based on selections and match criteria
  * @method
  * @param {String[]} bets - represets all bets on race
  * @param {String[]} matchCriteria - represets match criteria list

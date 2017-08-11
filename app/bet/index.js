@@ -30,7 +30,7 @@ Bet.save = function(req, next){
 	try{
 		var raceId = req.raceId;
 		var bet = new Bet(req.body.product, req.body.selections, req.body.stake);
-		validator(bet, function(err, res){
+		validator.validate(bet, function(err, res){
 			if(err){
 				throw err;
 			}

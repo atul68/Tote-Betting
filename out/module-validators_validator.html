@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Dividend</title>
+    <title>JSDoc: Module: validators/validator</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Dividend</h1>
+    <h1 class="page-title">Module: validators/validator</h1>
 
     
 
@@ -28,7 +28,8 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Dividend<span class="signature">(product, winningSelections, dividend)</span><span class="type-signature"></span></h2>
+        
+            
         
     
 </header>
@@ -37,11 +38,111 @@
     <div class="container-overview">
     
         
+            <div class="description">Module for request validation.</div>
+        
+
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
 
     
 
     
-    <h4 class="name" id="Dividend"><span class="type-signature"></span>new Dividend<span class="signature">(product, winningSelections, dividend)</span><span class="type-signature"></span></h4>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="validators_validator.js.html">validators/validator.js</a>, <a href="validators_validator.js.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".validate"><span class="type-signature">(static) </span>validate<span class="signature">(bet, next)</span><span class="type-signature"></span></h4>
     
 
     
@@ -49,7 +150,7 @@
 
 
 <div class="description">
-    Represents a dividend Class
+    Validate methodThis method is used for validating the bet object. Bet object haschilds product, selections and stake. If validation fails return errrosin next(errors), otherwise call next() function.
 </div>
 
 
@@ -85,13 +186,13 @@
 
         <tr>
             
-                <td class="name"><code>product</code></td>
+                <td class="name"><code>bet</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type"><a href="Bet.html">Bet</a></span>
 
 
             
@@ -101,20 +202,20 @@
 
             
 
-            <td class="description last">represents product types(allowed are W, P or E)</td>
+            <td class="description last">represents Bet object</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>winningSelections</code></td>
+                <td class="name"><code>next</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">function</span>
 
 
             
@@ -124,30 +225,7 @@
 
             
 
-            <td class="description last">represents winning horse no based on bet type</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>dividend</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">represents dividend amount based on bet type</td>
+            <td class="description last">represents Callback function</td>
         </tr>
 
     
@@ -188,7 +266,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app_dividend_index.js.html">app/dividend/index.js</a>, <a href="app_dividend_index.js.html#line20">line 20</a>
+        <a href="validators_validator.js.html">validators/validator.js</a>, <a href="validators_validator.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -216,33 +294,13 @@
 
 
 
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
-
         
             
 
     
 
     
-    <h4 class="name" id=".calculate"><span class="type-signature">(static) </span>calculate<span class="signature">(req, next)</span><span class="type-signature"> &rarr; {<a href="Dividend.html">Dividend</a>}</span></h4>
+    <h4 class="name" id=".validateResult"><span class="type-signature">(static) </span>validateResult<span class="signature">(request, next)</span><span class="type-signature"></span></h4>
     
 
     
@@ -250,7 +308,7 @@
 
 
 <div class="description">
-    dividend Class - calculate methodThis method is used for calculating dividend amounts for all bet types.If dividend calculated successfully returns Dividend object and call next(), otherwise return errors in next(err)
+    validateResult methodThis method is used for validating the result's request object. request object haschildren first, second and third. If validation fails return errorsin next(errors), otherwise call next() function.
 </div>
 
 
@@ -286,13 +344,13 @@
 
         <tr>
             
-                <td class="name"><code>req</code></td>
+                <td class="name"><code>request</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">request</span>
 
 
             
@@ -302,7 +360,7 @@
 
             
 
-            <td class="description last">represets json object with childs raceId and body</td>
+            <td class="description last">represents result's Request</td>
         </tr>
 
     
@@ -366,7 +424,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app_dividend_index.js.html">app/dividend/index.js</a>, <a href="app_dividend_index.js.html#line36">line 36</a>
+        <a href="validators_validator.js.html">validators/validator.js</a>, <a href="validators_validator.js.html#line77">line 77</a>
     </li></ul></dd>
     
 
@@ -389,28 +447,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    dividends - represents dividends list based on bet types
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="Dividend.html">Dividend</a></span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 

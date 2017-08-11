@@ -2,17 +2,20 @@
 
 var config = require('./../config/bidConfig');
 /**
+ * Module for request validation.
+ * @module validators/validator
+ */
+
+/**
  * Validate method
  * This method is used for validating the bet object. Bet object has
  * childs product, selections and stake. If validation fails return errros
  * in next(errors), otherwise call next() function.
  * @method
  * @param {Bet} bet - represents Bet object
- * @param {function} next - represents Calback function
+ * @param {function} next - represents Callback function
  */
-
-
-function validate(bet, cb) {
+exports.validate =function (bet, cb) {
     var errors = [];
     if(bet.product.trim()){
         var validProducts=config.bidTypes; // Accepted Products
@@ -25,7 +28,7 @@ function validate(bet, cb) {
 
     if(bet.selections.trim()){
         //Exacta bet selection has format - {{1,2}}
-        if( 'E' === bet.product.trim() && bet.selections.trim().split(",").length !== 2 ) {   
+        if( 'E' === bet.product.trim() && bet.selections.trim().split(",").length !== 2 ) {
             errors.push(new Error('Exacta bet Horse No should be <number>,<number> format.'));
         }
         if('E' !== bet.product.trim() && bet.selections.trim().split(",").length !== 1){
@@ -56,10 +59,46 @@ function validate(bet, cb) {
     } else {
         cb();
     }
-}
+};
 
 function isValidSelections(value) {
     return /[1-9][0-9]*,[1-9][0-9]*|[1-9][0-9]*/.test(value);  //Regex for matching selections input
 }
 
-module.exports = validate;
+/**
+ * validateResult method
+ * This method is used for validating the result's request object. request object has
+ * children first, second and third. If validation fails return errors
+ * in next(errors), otherwise call next() function.
+ * @method
+ * @param {request} request - represents result's Request
+ * @param {function} next - represents Calback function
+ */
+exports.validateResult =function (req,cb) {
+    req.checkBody('first', 'First Ranker is Required ').notEmpty();
+    req.checkBody('second', 'Second Ranker is Required').notEmpty();
+    req.checkBody('third', 'Third Ranker is Required').notEmpty();
+    req.checkBody('first', 'First Ranker should be a number.').isInt();
+    req.checkBody('second', 'Second Ranker should be a number. ').isInt();
+    req.checkBody('third', 'Third Ranker should be a number. ').isInt();
+
+    var errors = req.validationErrors();
+    var horseRank = new Set();
+    horseRank.add(req.body.first);
+    horseRank.add(req.body.second);
+    horseRank.add(req.body.third);
+
+    if (!errors && horseRank && horseRank.size != 3) {
+        errors = [];
+        errors.push({param: '', msg: 'First,Second.Third Rankers should be unique', value: ''});
+    }
+
+    if(errors.length > 0){
+        return cb(errors);
+    } else {
+        cb();
+    }
+
+};
+
+

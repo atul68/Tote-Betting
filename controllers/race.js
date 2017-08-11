@@ -4,6 +4,15 @@ var express  = require('express');
 var router = express.Router();
 var Race = require('./../app/race');
 
+/**
+ *
+ * This method is used for set race id in request as parameter
+ * returns call back
+ * @method  race Controller Class - router.param method
+ * @param {int} raceId - represents race id
+ * @param {Function} call function - represents Callback function
+ * @returns {next}  - call back
+ */
 // raceId set in req as param
 router.param('raceId', function(req, res, next, raceId) {
     req.raceId = raceId;
@@ -11,6 +20,14 @@ router.param('raceId', function(req, res, next, raceId) {
  
 });
 
+
+/**
+ * This method handle get home page request
+ * @method race Controller Class - router.get method
+ * @param {String} URL - represents request url
+ * @param {Function} call function - represents Callback function
+ * @returns {next}  - call back
+ */
 //get route
 router.get('/', function(req, res, next) {
  	return res.render('home', {
@@ -18,9 +35,15 @@ router.get('/', function(req, res, next) {
 	});
 });
 
+/**
+ * This method handle start race request
+ * @method race Controller Class - router.get method
+ * @param {String} URL - represents request url
+ * @param {Function} call function - represents Callback function
+ * @returns {next}  - call back
+ */
 //get race route
 router.get('/races', function(req, res, next) {
-	console.log('Race--->')
 	Race.start(req.body, function(err, resp){
 		if(err){
 			next(err);
@@ -32,6 +55,13 @@ router.get('/races', function(req, res, next) {
 	})
 });
 
+/**
+ * This method handler start race request
+ * @method race Controller Class - router.get method
+ * @param {String} URL - represents request url
+ * @param {Function} call function - represents Callback function
+ * @returns {next}  - call back
+ */
 //get route
 router.get('/races/:raceId', function(req, res, next) {
  	return res.render('races', {
