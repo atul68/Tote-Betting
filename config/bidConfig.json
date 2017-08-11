@@ -1,0 +1,20 @@
+{
+  "commissions":{
+      "winBet" : 0.15,
+      "placeBet" : 0.12,
+      "exactaBet" : 0.18
+  },
+  "bidTypes":[
+  "W",
+  "P",
+  "E"
+  ],
+  "win":"W",
+  "place":"P",
+  "exacta": "E",
+  "db":{
+    "extn":".txt",
+    "resultsFolderURL":"./db/results_",
+    "betsFolderURL":"./db/bets_"
+  }
+}

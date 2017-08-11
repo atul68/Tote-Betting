@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1 !{title}
+    h1  Race started with id : !{raceId}
+
+    a(href='/races/'+raceId+'/bets') Start Betting
+    br
+    a(href='/races/'+raceId+'/dividends') Show Dividend
+    br
+    a(href='/') Back to Home page
+    br

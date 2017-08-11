@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    h1 Please enter the bid result
+    - if (errors)
+        ul
+          each val, index in errors
+            li= index + ':' +val.msg
+
+    form(method='POST' action='/races/'+raceId+'/results')
+        label First Ranker:
+        br
+        br
+        input(type='text', name='first')
+        br
+        br
+        label Second Ranker:
+        br
+        br
+        input(type='text', name='second')
+        br
+        br
+        label Third Ranker:
+        br
+        br
+        input(type='text', name='third')
+        br
+        br
+        button Submit
+        br
+        br
+        a(href='/races/'+raceId) Back to main page
+        br

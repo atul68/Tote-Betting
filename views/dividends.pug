@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1 Dividends
+    - if (errors)
+            ul
+              each val, index in errors
+                li= index + ':' +val.msg
+
+    lu
+      - if (dividends != null && dividends.length)
+        -for (var i = 0; i < dividends.length; i++)
+            -for (var j = 0; j < dividends[i].length; j++)
+               li Product ::  !{dividends[i][j].product}       |    winningSelections :: !{dividends[i][j].winningSelections}  |       amount:: !{dividends[i][j].amount}
+            br
+      - else
+        li sorry, no dividends found!
+      br
+      a(href='/races') Start a new race
+      br
+
+

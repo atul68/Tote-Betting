@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    h1 Bets
+    - if (errors)
+            ul
+              each val, index in errors
+                li= val
+    form(method='POST' action='/races/'+raceId+'/bets')
+          label Bid Type : W - Win , P - Place , E - Exacta:
+          br
+          br
+          input(type='text',name='product')
+          br
+          br
+          label Horse No.:
+          br
+          br
+          input(type='text', name='selections')
+          br
+          br
+          label Bid Amount in $:
+          br
+          br
+          input(type='text', name='stake')
+          br
+          br
+          button Submit
+          br
+          br
+          a(href='/races/'+raceId+'/results') Results
+          br
+          br
+          a(href='/') Back to Home page
+          br
+          br
+
