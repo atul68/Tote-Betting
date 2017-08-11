@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: validators/validator.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: validators/validator.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
+
+var config = require('./../config/bidConfig');
+/**
+ * Represents a Validator Class
+ * Validate method
+ * This method is used for validating the bet object. Bet object has
+ * childs product, selections and stake. If validation fails return errros
+ * in next(errors), otherwise call next() function.
+ * @method
+ * @param {Bet} bet - represents Bet object
+ * @param {function} next - represents Calback function
+ */
+
+
+exports.validate =function (bet, cb) {
+    var errors = [];
+    if(bet.product.trim()){
+        var validProducts=config.bidTypes; // Accepted Products
+        if(validProducts.indexOf(bet.product.trim())  &lt; 0){
+            errors.push(new Error("Select Bid Type from W, P or E."));
+        }
+    } else {
+        errors.push(new Error("Bid Type is Required."));
+    }
+
+    if(bet.selections.trim()){
+        //Exacta bet selection has format - {{1,2}}
+        if( 'E' === bet.product.trim() &amp;&amp; bet.selections.trim().split(",").length !== 2 ) {
+            errors.push(new Error('Exacta bet Horse No should be &lt;number>,&lt;number> format.'));
+        }
+        if('E' !== bet.product.trim() &amp;&amp; bet.selections.trim().split(",").length !== 1){
+            errors.push(new Error('Horse No should be a number format.'));
+        }
+        if('E' === bet.product.trim() &amp;&amp; bet.selections.trim().split(",").length == 2){
+            var selectedHoreseList=bet.selections.trim().split(",");
+            if(selectedHoreseList[0]==selectedHoreseList[1])
+            errors.push(new Error('Exacta bets selected horses should be unique.'));
+        }
+        if(!isValidSelections(bet.selections.trim())){
+            errors.push(new Error('Horse No value is not valid.'));
+        }
+    } else{
+        errors.push(new Error("Horse No is Required."));
+    }
+
+    if(bet.stake.trim()){
+        if(isNaN(bet.stake.trim())){
+            errors.push(new Error("Bid amount should be a number."));
+        }
+    } else{
+        errors.push(new Error("Bid Amount is Required."));
+    }
+
+    if(errors.length > 0){
+        return cb(errors);
+    } else {
+        cb();
+    }
+};
+
+function isValidSelections(value) {
+    return /[1-9][0-9]*,[1-9][0-9]*|[1-9][0-9]*/.test(value);  //Regex for matching selections input
+}
+
+/**
+ * validateResult method
+ * This method is used for validating the result object. result object has
+ * childs first, second and third. If validation fails return errros
+ * in next(errors), otherwise call next() function.
+ * @method
+ * @param {Bet} bet - represents Bet object
+ * @param {function} next - represents Calback function
+ */
+exports.validateResult =function (req,cb) {
+    req.checkBody('first', 'First Ranker is Required ').notEmpty();
+    req.checkBody('second', 'Second Ranker is Required').notEmpty();
+    req.checkBody('third', 'Third Ranker is Required').notEmpty();
+    req.checkBody('first', 'First Ranker should be a number.').isInt();
+    req.checkBody('second', 'Second Ranker should be a number. ').isInt();
+    req.checkBody('third', 'Third Ranker should be a number. ').isInt();
+
+    var errors = req.validationErrors();
+    var horseRank = new Set();
+    horseRank.add(req.body.first);
+    horseRank.add(req.body.second);
+    horseRank.add(req.body.third);
+
+    if (!errors &amp;&amp; horseRank &amp;&amp; horseRank.size != 3) {
+        errors = [];
+        errors.push({param: '', msg: 'First,Second.Third Rankers should be unique', value: ''});
+    }
+
+    if(errors.length > 0){
+        return cb(errors);
+    } else {
+        cb();
+    }
+
+};
+
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Bet.html">Bet</a></li><li><a href="Dividend.html">Dividend</a></li><li><a href="module.exports.html">exports</a></li><li><a href="Race.html">Race</a></li><li><a href="Result.html">Result</a></li></ul><h3>Global</h3><ul><li><a href="global.html#filterBetsBasedOnSelections">filterBetsBasedOnSelections</a></li><li><a href="global.html#getBetsTotalAmounts">getBetsTotalAmounts</a></li><li><a href="global.html#getCorrectBets">getCorrectBets</a></li><li><a href="global.html#getDividendForAllPlaces">getDividendForAllPlaces</a></li><li><a href="global.html#getExactaDividend">getExactaDividend</a></li><li><a href="global.html#getExactaDivident">getExactaDivident</a></li><li><a href="global.html#getPlaceDividend">getPlaceDividend</a></li><li><a href="global.html#getPlaceDivident">getPlaceDivident</a></li><li><a href="global.html#getWinDividend">getWinDividend</a></li><li><a href="global.html#getWinDivident">getWinDivident</a></li><li><a href="global.html#validate">validate</a></li><li><a href="global.html#validateResult">validateResult</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Fri Aug 11 2017 21:31:55 GMT+0530 (India Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
