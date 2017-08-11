@@ -17,7 +17,7 @@ Tote betting involves punters choosing the outcome of a race by placing bets int
 - Tabcorp takes a 12% commission from the Place pool.
 - The total pool is split evenly into 3 and each of these amounts is then split, proportionally to stake, amongst the punters who chose each placed horse.
 
-#EXACTA
+# EXACTA
 - Punters must choose the first and second place runners in a race in the correct order.
 - Tabcorp takes an 18% commission from the Exacta pool.
 - The remaining total is split, proportionally to stake, amongst punters who chose the correct first and second horse in correct order.
