@@ -16,7 +16,7 @@ function Race(raceId){
  * This method is used for saving a bet in Bets file.
  * @method
  * @param {Object} req
- * @param {Function} next - Calback
+ * @param {Function} next - Callback
  * @returns {Race} race - Race object
  */
 Race.start = function(body, next){

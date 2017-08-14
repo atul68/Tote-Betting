@@ -15,9 +15,9 @@ var Dividend = require('./../app/dividend');
  */
 // raceId set in req as param
 router.param('raceId', function(req, res, next, raceId) {
-    req.raceId = raceId;
+	req.raceId = raceId;
     next();
- 
+
 });
 
 /**
@@ -30,7 +30,6 @@ router.param('raceId', function(req, res, next, raceId) {
 // get route
 router.get('/races/:raceId/dividends', function(req, res, next) {
 	Dividend.calculate(req, function(err, resp){
-
 	 	if(err){
 			next(err);
 		}else{

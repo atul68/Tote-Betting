@@ -29,8 +29,8 @@ function Dividend(product, winningSelections, dividend){
  * If dividend calculated successfully returns Dividend object and call next(), 
  * otherwise return errors in next(err)
  * @method
- * @param {Object} req - represets json object with childs raceId and body
- * @param {Function} next - represents Calback function
+ * @param {Object} req - represents json object with childs raceId and body
+ * @param {Function} next - represents Callback function
  * @returns {Dividend} dividends - represents dividends list based on bet types
  */
 Dividend.calculate = function(req, next){
@@ -57,16 +57,25 @@ Dividend.calculate = function(req, next){
 			next(null, dividends);
 		})
 	}catch(err){
-		next(err);
+		console.log(err.errno==-4058 );
+		console.log(err.path.indexOf("bets_")>0  );
+		if(err.errno==-4058 && err.path.indexOf("bets_")>0 ){
+			var noBetfounderror=[];
+			noBetfounderror.push(new Error('No bet found for give race'));
+			next(noBetfounderror);
+		}else {
+			console.log("err", err);
+			next(err);
+		}
 	}
-}
+};
 
 /**
  * getWinDivident method
- * This method is used for getitng win bet dividends. It will filter all win bets 
+ * This method is used for getting win bet dividends. It will filter all win bets
  * and calls getWinDividend function of win-divident.js
  * @method
- * @param {String[]} bets - represets all bets on race
+ * @param {String[]} bets - represents all bets on race
  * @param {String} resultData - represents race result
  * @returns {Dividend[]} winDividends - represents win dividends
  */
@@ -82,10 +91,10 @@ function getWinDivident(bets, resultData){
 
 /**
  * getPlaceDivident method
- * This method is used for getitng place bet dividends. It will filter all place bets 
+ * This method is used for getting place bet dividends. It will filter all place bets
  * and calls getPalceDividend function of place-divident.js
  * @method
- * @param {String[]} bets - represets all bets on race
+ * @param {String[]} bets - represents all bets on race
  * @param {String} resultData - represents race result
  * @returns {Dividend[]} placeDividends - represents place dividends
  */
@@ -103,10 +112,10 @@ function getPlaceDivident(bets, resultData){
 
 /**
  * getExactaDivident method
- * This method is used for getitng place exacta dividends. It will filter all exacta bets 
+ * This method is used for getting place exacta dividends. It will filter all exacta bets
  * and calls getExactaDivident function of exacta-divident.js
  * @method
- * @param {String[]} bets - represets all bets on race
+ * @param {String[]} bets - represents all bets on race
  * @param {String} resultData - represents race result
  * @returns {Dividend[]} exactaDividents - represents exacta dividends
  */

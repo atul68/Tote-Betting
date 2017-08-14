@@ -2,7 +2,7 @@ var chai = require("chai")
 chai.should();
 chai.use(require('chai-things'));
 var expect = chai.expect;
-var Race = require('./../../app/race');
+var Race = require('./../../../app/race');
 
 var req = {};
 

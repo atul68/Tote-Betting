@@ -17,7 +17,7 @@ var poolAmout = 12 ;
 var correctBetAmount = 6 ;  
 var commission = 0.15;
 
-describe("Util", function() {
+describe("helper", function() {
     it("should be calcualte total amount", function(done) {
        var total = helper.calculateTotalAmount(bets);
        assert.equal(12, total);

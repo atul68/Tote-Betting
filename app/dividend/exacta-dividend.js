@@ -5,9 +5,9 @@ var helper = require('./../../helpers/helper');
 
 /**
  * ExactaDividend Class - getExactaDividend method
- * This method is used for getitng exacta bet dividend amount.
+ * This method is used for getting exacta bet dividend amount.
  * @method
- * @param {String[]} exactaBets - represets all exacta type bets on race
+ * @param {String[]} exactaBets - represents all exacta type bets on race
  * @param {String} result - represents race result
  * @param {Function} callback - represents Callback function
  * @returns {String[]} exactaDividends - represents exacta dividend amount
@@ -30,9 +30,9 @@ function getExactaDividend(exactaBets, result, next){
  *  ExactaDividend Class - filterBetsBasedOnSelections method
   * This method is used for filtering bets based on selections and match criteria
  * @method
- * @param {String[]} bets - represets all bets on race
- * @param {String[]} matchCriteria - represets match criteria list
- * @returns {String[]} filterdBets - represets filtered bets list
+ * @param {String[]} bets - represents all bets on race
+ * @param {String[]} matchCriteria - represents match criteria list
+ * @returns {String[]} filterdBets - represents filtered bets list
  */
 function filterBetsBasedOnSelections(bets, matchCriteria){
 	return bets.filter(function(bet){

@@ -65,9 +65,9 @@ function getBetsTotalAmounts(correctBetsAmounts){
  * getDividendForAllPlaces method
  * This method is used for getting dividend amount list based on place bet types
  * @method
- * @param {String} poolAmount - represets total amount of bets
- * @param {String} correctBetsAmounts - represets total amount list of correct bets
- * @param {String} commission - represets commission of exacta bet type
+ * @param {String} poolAmount - represents total amount of bets
+ * @param {String} correctBetsAmounts - represents total amount list of correct bets
+ * @param {String} commission - represents commission of exacta bet type
  * @returns {Number[]} dividedAmount - represents dividend amount list
  */
 function getDividendForAllPlaces(poolAmount, correctBetsAmounts, commission){

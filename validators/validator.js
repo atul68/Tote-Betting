@@ -81,23 +81,25 @@ exports.validateResult =function (req,cb) {
     req.checkBody('first', 'First Ranker should be a number.').isInt();
     req.checkBody('second', 'Second Ranker should be a number. ').isInt();
     req.checkBody('third', 'Third Ranker should be a number. ').isInt();
+     req.getValidationResult().
+    then(function(error){
+        if(!error.isEmpty()){
+            cb(error.useFirstErrorOnly().array());
+        }else{
+            var horseRank = new Set();
+            horseRank.add(req.body.first);
+            horseRank.add(req.body.second);
+            horseRank.add(req.body.third);
+            if (horseRank && horseRank.size != 3) {
+                var errors=[];
+                errors.push({param: '', msg: 'First,Second.Third Rankers should be unique', value: ''});
+                return cb(errors);
+            }else{
+                cb();
+            }
 
-    var errors = req.validationErrors();
-    var horseRank = new Set();
-    horseRank.add(req.body.first);
-    horseRank.add(req.body.second);
-    horseRank.add(req.body.third);
-
-    if (!errors && horseRank && horseRank.size != 3) {
-        errors = [];
-        errors.push({param: '', msg: 'First,Second.Third Rankers should be unique', value: ''});
-    }
-
-    if(errors.length > 0){
-        return cb(errors);
-    } else {
-        cb();
-    }
+        }
+    });
 
 };
 

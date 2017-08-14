@@ -3,7 +3,7 @@ chai.should();
 chai.use(require('chai-things'));
 var expect = chai.expect;
 var assert = chai.assert;
-var Bet = require('./../../app/bet');
+var Bet = require('./../../../app/bet');
 
 var req = {
     "raceId": "1",

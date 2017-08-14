@@ -8,7 +8,7 @@ var helper = require('./../../helpers/helper');
  * getWinDivident method
  * This method is used for getitng win bet dividend amount.
  * @method
- * @param {String[]} winBets - represets all win type bets on race
+ * @param {String[]} winBets - represents all win type bets on race
  * @param {String} result - represents race result
  * @param {Function} callback - represents Callback function
  * @returns {String[]} winDividends - represents win dividend amount

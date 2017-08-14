@@ -15,7 +15,7 @@ var Bet = require('./../app/bet');
  * @returns {next}  - call back
  */
 router.param('raceId', function(req, res, next, raceId) {
-    req.raceId = raceId;
+	req.raceId = raceId;
     next();
  
 });

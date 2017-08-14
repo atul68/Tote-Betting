@@ -5,8 +5,7 @@ block content
     - if (errors)
             ul
               each val, index in errors
-                li= index + ':' +val.msg
-
+                li= val
     lu
       - if (dividends != null && dividends.length)
         -for (var i = 0; i < dividends.length; i++)

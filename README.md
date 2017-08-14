@@ -116,7 +116,7 @@ Step 16: This page will show dividend details for all bid types
 ![Dividends Page](https://github.com/atul68/Tote-Betting/blob/master/images/dividends.PNG?raw=true "Dividends Page")
 
 # How to run test cases:
-run "mocha" to run test cases.
+run "npm test" to run test cases.
 
 # Future Scope:
 - user management functionality

@@ -34,9 +34,6 @@ app.use('', dividendRouter);
 //Set static path
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/edit', function(req,res){
-   res.render('home');
-});
 
 // Error Handler
 app.use(errorHandler);
@@ -44,4 +41,11 @@ app.listen(
     3000,function(){
         console.log('app listening on port 3000!');
     }
-)
+);
+
+//handle the uncaught exception
+process.on('uncaughtException', function (err) {
+    console.error((new Date).toUTCString() + ' uncaughtException:', err.message);
+    console.error(err.stack);
+    process.exit(1);
+});

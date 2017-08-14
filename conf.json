@@ -1,10 +1,9 @@
 {
     "source": {
-        "include": ["./controllers","./helpers/helper.js","./middlewares","./validators","./app"],
+        "include": ["./controllers","./helpers","./middlewares","./validators","./app"],
         "includePattern": ".+\\.js(doc|x)?$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
-
     "recurseDepth": 4
 
 }

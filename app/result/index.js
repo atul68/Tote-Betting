@@ -21,8 +21,8 @@ function Result(first, second, third){
  * This method is used for saving a result in Result file. If result save successfully,
  * returns Result object, otherwise return errors in next(err)
  * @method
- * @param {Object} req - represets json object with childs raceId and body
- * @param {Function} next - represents Calback function
+ * @param {Object} req - represets json object with children raceId and body
+ * @param {Function} next - represents Callback function
  * @returns {Result} result - represents Result object
  */
 Result.save = function(req, next){
@@ -35,6 +35,6 @@ Result.save = function(req, next){
 	}catch(err){
 		next(err);
 	}
-}
+};
 
 module.exports = Result;

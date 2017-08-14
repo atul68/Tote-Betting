@@ -15,7 +15,7 @@ var validator = require("./../validators/validator");
  */
 // raceId set in req as param
 router.param('raceId', function(req, res, next, raceId) {
-    req.raceId = raceId;
+	req.raceId = raceId;
     next()
  
 });
@@ -45,7 +45,7 @@ router.get('/races/:raceId/results', function(req, res, next) {
 router.post('/races/:raceId/results', function(req, res, next) {
 	validator.validateResult(req, function(err,response ){
 		if(err){
-			throw err;
+			next(err);
 		}
 		else {
 			Result.save(req, function (err, resp) {
@@ -54,8 +54,6 @@ router.post('/races/:raceId/results', function(req, res, next) {
 				} else {
 					return res.render('showdividends', {
 						raceId: req.raceId
-
-
 					});
 				}
 			});

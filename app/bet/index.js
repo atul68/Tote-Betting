@@ -22,8 +22,8 @@ function Bet(product, selections, stake){
  * This method is used for saving a bet in Bets file. If bet save successfully,
  * returns Bet object, otherwise return errors in next(err)
  * @method
- * @param {Object} req - represets json object with childs raceId and body
- * @param {Function} next - represents Calback function
+ * @param {Object} req - represents json object with children raceId and body
+ * @param {Function} next - represents Callback function
  * @returns {Bet} bet - represents Bet object
  */
 Bet.save = function(req, next){

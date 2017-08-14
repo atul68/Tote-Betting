@@ -17,7 +17,7 @@ var Race = require('./../app/race');
 router.param('raceId', function(req, res, next, raceId) {
     req.raceId = raceId;
     next();
- 
+
 });
 
 
@@ -29,8 +29,8 @@ router.param('raceId', function(req, res, next, raceId) {
  * @returns {next}  - call back
  */
 //get route
-router.get('/', function(req, res, next) {
- 	return res.render('home', {
+router.get('/', function(req, res, next){
+	return res.render('home', {
 		title : 'Home'
 	});
 });
@@ -56,7 +56,7 @@ router.get('/races', function(req, res, next) {
 });
 
 /**
- * This method handler start race request
+ * This method handler start race request coming from result page
  * @method race Controller Class - router.get method
  * @param {String} URL - represents request url
  * @param {Function} call function - represents Callback function

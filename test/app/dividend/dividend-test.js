@@ -3,7 +3,7 @@ chai.should();
 chai.use(require('chai-things'));
 var expect = chai.expect;
 var assert = chai.assert;
-var Dividend = require('./../../app/dividend');
+var Dividend = require('./../../../app/dividend');
 
 var req = {
     "raceId": "test"

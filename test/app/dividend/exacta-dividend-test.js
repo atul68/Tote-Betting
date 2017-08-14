@@ -1,7 +1,7 @@
 var chai = require("chai")
 chai.use(require('chai-things'));
 var assert = chai.assert;
-var eDividend = require('./../../app/dividend/exacta-dividend');
+var eDividend = require('./../../../app/dividend/exacta-dividend');
 
 var bets = [];
 bets.push('{"product":"E","selections":"1,2","stake":"13"}');
